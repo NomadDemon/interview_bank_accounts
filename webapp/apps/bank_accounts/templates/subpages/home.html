@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if title %} - {{ title }}{% endif %}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+	<p>
+		There is <b>{{ available_accounts|length }}</b> accounts in system<br/>
+		and <b>{{ available_currencies|length }}</b> available currencies in system
+	</p>
+	<p>
+		<a href="{% url 'bank_accounts:add-account' %}">Add new account</a><br/>
+		<a href="{% url 'bank_accounts:add-currency' %}">Add new currency</a>
+	</p>
+
+	{% if available_accounts %}
+		<p>Available currencies: {{ available_currencies|join:", " }}</p>
+	{% endif %}
+
+	{% if available_accounts %}
+	<table border="1">
+		<tr>
+			<td>Name</td>
+			<td>Description</td>
+			<td>Currency</td>
+			<td>Available funds</td>
+		</tr>
+		{% for acc in available_accounts %}
+		<tr>
+			<td>{{ acc.name }}</td>
+			<td>{{ acc.description }}</td>
+			<td>{{ acc.currency }}</td>
+			<td>{{ acc.funds }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}

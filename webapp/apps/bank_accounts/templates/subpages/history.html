@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if title %} - {{ title }}{% endif %}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+	<h2>History</h2>
+
+	<form>
+		{{ history_filters.by_account }}
+		<input type="submit" value="Filter" />
+	</form>
+
+	<table border="1">
+		<tr>
+			<td>Title</td>
+			<td>From</td>
+			<td>Amount</td>
+			<td>Currency</td>
+			<td>To</td>
+			<td>Date</td>
+		</tr>
+		{% for transfer in transfers %}
+		<tr>
+			<td>{{ transfer.name }}</td>
+			<td>{{ transfer.from_account|default:"" }}</td>
+			<td>{{ transfer.value }}</td>
+			<td>{{ transfer.currency }}</td>
+			<td>{{ transfer.to_account|default:"" }}</td>
+			<td>{{ transfer.transfer_date }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if title %} - {{ title }}{% endif %}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+	<h2>New deposit</h2>
+
+	{% if success %}
+		<p>Success, deposit made to <b>account id: {{ account }}</b> with amount of {{ value }}</p>
+	{% else %}
+		{{ deposit_form.errors }}
+		<form method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>{{ deposit_form.name.label }}</td>
+					<td>{{ deposit_form.to_account.label }}</td>
+					<td>{{ deposit_form.currency.label }}</td>
+					<td>{{ deposit_form.value.label }}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{ deposit_form.name }}</td>
+					<td>{{ deposit_form.to_account }}</td>
+					<td>{{ deposit_form.currency }}</td>
+					<td>{{ deposit_form.value }}</td>
+					<td><input type="submit" value="Deposit" /></td>
+				</tr>
+			</table>
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}
+
+

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if title %} - {{ title }}{% endif %}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+	<h2>New transfer</h2>
+
+	{% if success %}
+		<p>Success, transfer made from <b>account id: {{ from_account }}</b> to <b>account id: {{ to_account }}</b> with amount of {{ value }}</p>
+	{% else %}
+		{{ transfer_form.errors }}
+		<form method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>{{ transfer_form.name.label }}</td>
+					<td>{{ transfer_form.from_account.label }}</td>
+					<td>{{ transfer_form.currency.label }}</td>
+					<td>{{ transfer_form.value.label }}</td>
+					<td>{{ transfer_form.to_account.label }}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{ transfer_form.name }}</td>
+					<td>{{ transfer_form.from_account }}</td>
+					<td>{{ transfer_form.currency }}</td>
+					<td>{{ transfer_form.value }}</td>
+					<td>{{ transfer_form.to_account }}</td>
+					<td><input type="submit" value="Transfer" /></td>
+				</tr>
+			</table>
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}

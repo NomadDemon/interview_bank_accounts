@@ -1,0 +1,12 @@
+<header>
+	<div>
+		<h1>Welcome to my bank</h1>
+		<a href="{% url 'bank_accounts:home' %}">HOME</a> |
+		<a href="{% url 'bank_accounts:add-currency' %}">Add new currency</a> |
+		<a href="{% url 'bank_accounts:add-account' %}">Add new account</a> |
+		<a href="{% url 'bank_accounts:history' %}">History</a> |
+		<a href="{% url 'bank_accounts:deposit' %}">Deposit</a> |
+		<a href="{% url 'bank_accounts:withdraw' %}">Withdraw</a> |
+		<a href="{% url 'bank_accounts:transfer' %}">Transfer</a>
+	</div>
+</header>

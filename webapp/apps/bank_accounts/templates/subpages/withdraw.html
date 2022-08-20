@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if title %} - {{ title }}{% endif %}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+	<h2>New withdrawal</h2>
+
+	{% if success %}
+		<p>Success, withdrawal made from <b>account id: {{ account }}</b> with amount of {{ value }}</p>
+	{% else %}
+		{{ withdraw_form.errors }}
+		<form method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td>{{ withdraw_form.name.label }}</td>
+					<td>{{ withdraw_form.from_account.label }}</td>
+					<td>{{ withdraw_form.currency.label }}</td>
+					<td>{{ withdraw_form.value.label }}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{ withdraw_form.name }}</td>
+					<td>{{ withdraw_form.from_account }}</td>
+					<td>{{ withdraw_form.currency }}</td>
+					<td>{{ withdraw_form.value }}</td>
+					<td><input type="submit" value="Withdraw" /></td>
+				</tr>
+			</table>
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}
+
+
+

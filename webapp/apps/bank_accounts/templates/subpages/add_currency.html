@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if title %} - {{ title }}{% endif %}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+	<h2>Add Currency</h2>
+
+	{% if success %}
+		<p>Success, <b>{{ symbol }}</b> added to available currencies</p>
+	{% else %}
+		{{ add_currency_form.errors }}
+		<form method="POST">
+			{% csrf_token %}
+			{{ add_currency_form.symbol }}
+			<input type="submit" value="Add" />
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}

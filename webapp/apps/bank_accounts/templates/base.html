@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{% block title %}{% if title %}{{ title }} | {% endif %}{% endblock %}{{ SITE_NAME }}</title>
+</head>
+
+<body>
+<div>
+	{% include 'includes/header.html' %}
+
+	<section id="site_content">
+		{% block content %}
+		{% endblock %}
+	</section>
+
+	{% include 'includes/footer.html' %}
+</div>
+</body>
+</html>
