@@ -18,7 +18,7 @@ app is based on docker-compose, so you will have to have installed docker and do
 - install docker-compose
 - enter folder with downloaded repo
 - sudo docker-compose build
-- sudo docker-compose run web manage.py migrate
+- sudo docker-compose run web python manage.py migrate
 - sudo docker-compose up
 - app now should be ready to test on http://0.0.0.0:8000/
 
